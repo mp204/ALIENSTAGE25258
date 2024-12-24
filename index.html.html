@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cuenta Regresiva para tu Regalo</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        text-align: center;
+        padding: 50px;
+    }
+    #countdown {
+        font-size: 48px;
+        color: #333;
+        margin-top: 20px;
+    }
+    #message {
+        font-size: 24px;
+        color: #555;
+        margin-top: 20px;
+    }
+    img {
+        width: 300px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <h1>¡Prepárate para un viaje al universo de Alien Stage!</h1>
+    <div id="countdown"></div>
+    <img src="https://m.media-amazon.com/images/I/41TPPJk6i0L.jpg" alt="Libro de Arte Conceptual de Alien Stage">
+    <div id="message"></div>
+
+    <script>
+        // Establecer la fecha de cuenta atrás
+        var countdownDate = new Date("Dec 31, 2023 00:00:00").getTime();
+
+        var countdownFunction = setInterval(function() {
+            var now = new Date().getTime();
+            var timeleft = countdownDate - now;
+            
+            var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+            
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            if (timeleft < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "¡Es hora de explorar!";
+                document.getElementById("message").innerHTML = "Tu libro de arte conceptual de Alien Stage ha llegado.";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
